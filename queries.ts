@@ -26,7 +26,9 @@ async function fetchPosts() {
     },
     include: {
       author: true,
-      comments: true,
+      comments: {
+        include: {author: true}
+      },
     },
   });
 
@@ -62,9 +64,14 @@ async function fetchPostComments() {
   console.log("comments fetched", comments.length);
 }
 
-async function main() {
-  await fetchPosts();
-  await fetchPostComments();
+async function main(n: number) {
+  for (let i = 0; i < n; i++) {
+    await fetchPosts();
+  }
+  console.log("\n--------------------\n");
+  for (let i = 0; i < n; i++) {
+    await fetchPostComments();
+  }
 }
 
-main();
+main(10);

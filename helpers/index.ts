@@ -30,7 +30,7 @@ export async function createPosts(n: number) {
     postData.push({
       title: `Title-${nanoid()}`,
       content: `Content-${nanoid()}`,
-      authorId: 1,
+      authorId,
     });
   }
 
