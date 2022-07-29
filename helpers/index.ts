@@ -73,9 +73,9 @@ export async function createComments(n: number) {
 
 export async function initRecords() {
   const start = performance.now()
-  // await createUsers(10000)
+  await createUsers(10000)
   await createPosts(4600);
-  // await createComments(4620);
+  await createComments(4620);
   const timetaken = performance.now() - start;
   console.log("Time taken to create record", timetaken, "ms");
 }
