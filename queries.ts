@@ -49,9 +49,13 @@ async function fetchPostComments() {
     where: {
       postId,
     },
-    select: {
+    include: {
       author: true,
-      post: true,
+      post: {
+        include: {
+          author: true
+        }
+      },
     },
   });
 
